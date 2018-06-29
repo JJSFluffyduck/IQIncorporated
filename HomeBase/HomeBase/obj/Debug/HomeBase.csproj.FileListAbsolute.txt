@@ -72,3 +72,39 @@ C:\Users\jackh\Uni\Agile\Assignment 3\HomeBase\HomeBase\obj\Debug\HomeBase.cspro
 C:\Users\jackh\Uni\Agile\Assignment 3\HomeBase\HomeBase\obj\Debug\HomeBase.csproj.CopyComplete
 C:\Users\jackh\Uni\Agile\Assignment 3\HomeBase\HomeBase\obj\Debug\HomeBase.exe
 C:\Users\jackh\Uni\Agile\Assignment 3\HomeBase\HomeBase\obj\Debug\HomeBase.pdb
+D:\Github\Assignment3\HomeBase\HomeBase\bin\Debug\agileassignment3.mdf
+D:\Github\Assignment3\HomeBase\HomeBase\bin\Debug\agileassignment3_log.ldf
+D:\Github\Assignment3\HomeBase\HomeBase\bin\Debug\HomeBase.exe.config
+D:\Github\Assignment3\HomeBase\HomeBase\bin\Debug\HomeBase.exe
+D:\Github\Assignment3\HomeBase\HomeBase\bin\Debug\HomeBase.pdb
+D:\Github\Assignment3\HomeBase\HomeBase\bin\Debug\Microsoft.Data.Tools.Schema.Sql.UnitTesting.dll
+D:\Github\Assignment3\HomeBase\HomeBase\bin\Debug\Microsoft.Data.Tools.Schema.Sql.UnitTestingAdapter.dll
+D:\Github\Assignment3\HomeBase\HomeBase\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\Github\Assignment3\HomeBase\HomeBase\bin\Debug\Microsoft.Build.dll
+D:\Github\Assignment3\HomeBase\HomeBase\bin\Debug\Microsoft.Build.Framework.dll
+D:\Github\Assignment3\HomeBase\HomeBase\bin\Debug\System.Collections.Immutable.dll
+D:\Github\Assignment3\HomeBase\HomeBase\bin\Debug\System.IO.Compression.dll
+D:\Github\Assignment3\HomeBase\HomeBase\bin\Debug\System.Threading.Tasks.Dataflow.dll
+D:\Github\Assignment3\HomeBase\HomeBase\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
+D:\Github\Assignment3\HomeBase\HomeBase\bin\Debug\cs\Microsoft.Build.resources.dll
+D:\Github\Assignment3\HomeBase\HomeBase\bin\Debug\de\Microsoft.Build.resources.dll
+D:\Github\Assignment3\HomeBase\HomeBase\bin\Debug\en\Microsoft.Build.resources.dll
+D:\Github\Assignment3\HomeBase\HomeBase\bin\Debug\es\Microsoft.Build.resources.dll
+D:\Github\Assignment3\HomeBase\HomeBase\bin\Debug\fr\Microsoft.Build.resources.dll
+D:\Github\Assignment3\HomeBase\HomeBase\bin\Debug\it\Microsoft.Build.resources.dll
+D:\Github\Assignment3\HomeBase\HomeBase\bin\Debug\ja\Microsoft.Build.resources.dll
+D:\Github\Assignment3\HomeBase\HomeBase\bin\Debug\ko\Microsoft.Build.resources.dll
+D:\Github\Assignment3\HomeBase\HomeBase\bin\Debug\pl\Microsoft.Build.resources.dll
+D:\Github\Assignment3\HomeBase\HomeBase\bin\Debug\pt-BR\Microsoft.Build.resources.dll
+D:\Github\Assignment3\HomeBase\HomeBase\bin\Debug\ru\Microsoft.Build.resources.dll
+D:\Github\Assignment3\HomeBase\HomeBase\bin\Debug\tr\Microsoft.Build.resources.dll
+D:\Github\Assignment3\HomeBase\HomeBase\bin\Debug\zh-Hans\Microsoft.Build.resources.dll
+D:\Github\Assignment3\HomeBase\HomeBase\bin\Debug\zh-Hant\Microsoft.Build.resources.dll
+D:\Github\Assignment3\HomeBase\HomeBase\obj\Debug\HomeBase.csprojAssemblyReference.cache
+D:\Github\Assignment3\HomeBase\HomeBase\obj\Debug\HomeBase.Form1.resources
+D:\Github\Assignment3\HomeBase\HomeBase\obj\Debug\HomeBase.Properties.Resources.resources
+D:\Github\Assignment3\HomeBase\HomeBase\obj\Debug\HomeBase.csproj.GenerateResource.cache
+D:\Github\Assignment3\HomeBase\HomeBase\obj\Debug\HomeBase.csproj.CoreCompileInputs.cache
+D:\Github\Assignment3\HomeBase\HomeBase\obj\Debug\HomeBase.csproj.CopyComplete
+D:\Github\Assignment3\HomeBase\HomeBase\obj\Debug\HomeBase.exe
+D:\Github\Assignment3\HomeBase\HomeBase\obj\Debug\HomeBase.pdb
