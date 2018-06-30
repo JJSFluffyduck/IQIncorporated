@@ -1,2 +1,0 @@
-# IQIncorporated
-Assignment3
