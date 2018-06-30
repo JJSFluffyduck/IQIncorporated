@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using LiteDB;
 
 namespace HomeBase
 {
@@ -35,6 +36,15 @@ namespace HomeBase
             JobLocationBox.Clear();
             jobTimeBox.Clear();
             jobPriorityBox.Refresh();
+
+            // Open database (or create if not exits)
+            using (var db = new LiteDatabase(@"IQIncorporated.db"))
+            {
+                var json = JsonSerializer.Serialize(new BsonArray(db.Engine.FindAll("mycol")));
+
+                File.WriteAllText(@"C:\Users\jackh\Uni\Agile\ExportTest", json);
+
+            }
         }
         public void diaplay_data()
         {
