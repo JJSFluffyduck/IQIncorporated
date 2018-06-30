@@ -40,9 +40,13 @@ namespace HomeBase
             // Open database (or create if not exits)
             using (var db = new LiteDatabase(@"IQIncorporated.db"))
             {
-                var json = JsonSerializer.Serialize(new BsonArray(db.Engine.FindAll("mycol")));
+                string clients = JsonSerializer.Serialize(new BsonArray(db.Engine.FindAll("clients")));
+                string contractors = JsonSerializer.Serialize(new BsonArray(db.Engine.FindAll("contractors")));
+                string jobs = JsonSerializer.Serialize(new BsonArray(db.Engine.FindAll("jobs")));
 
-                File.WriteAllText(@"C:\Users\jackh\Uni\Agile\ExportTest", json);
+                string FormatedOutput = clients +Environment.NewLine+ contractors + Environment.NewLine + jobs;
+
+                File.WriteAllText(@"C:\Users\jackh\Uni\Agile\ExportTest\test.json", FormatedOutput);
 
             }
         }
