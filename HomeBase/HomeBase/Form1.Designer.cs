@@ -298,7 +298,6 @@
             this.jobLbl.Size = new System.Drawing.Size(81, 39);
             this.jobLbl.TabIndex = 16;
             this.jobLbl.Text = "Job:";
-            this.jobLbl.Click += new System.EventHandler(this.jobLbl_Click);
             // 
             // clientLbl
             // 
@@ -309,7 +308,6 @@
             this.clientLbl.Size = new System.Drawing.Size(114, 39);
             this.clientLbl.TabIndex = 17;
             this.clientLbl.Text = "Client:";
-            this.clientLbl.Click += new System.EventHandler(this.label1_Click);
             // 
             // contractorLbl
             // 
@@ -317,9 +315,9 @@
             this.contractorLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.contractorLbl.Location = new System.Drawing.Point(24, 281);
             this.contractorLbl.Name = "contractorLbl";
-            this.contractorLbl.Size = new System.Drawing.Size(175, 39);
+            this.contractorLbl.Size = new System.Drawing.Size(184, 39);
             this.contractorLbl.TabIndex = 18;
-            this.contractorLbl.Text = "Contractor";
+            this.contractorLbl.Text = "Contractor:";
             // 
             // clientFirstNameBox
             // 
@@ -362,6 +360,7 @@
             this.clientLandLineBox.Name = "clientLandLineBox";
             this.clientLandLineBox.Size = new System.Drawing.Size(265, 22);
             this.clientLandLineBox.TabIndex = 23;
+            this.clientLandLineBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.clientLandLineBox_KeyPress);
             // 
             // clientMobileBox
             // 
@@ -370,6 +369,7 @@
             this.clientMobileBox.Name = "clientMobileBox";
             this.clientMobileBox.Size = new System.Drawing.Size(265, 22);
             this.clientMobileBox.TabIndex = 24;
+            this.clientMobileBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.clientMobileBox_KeyPress);
             // 
             // clientBuisinessNameBox
             // 
@@ -456,6 +456,7 @@
             this.clientSavebtn.TabIndex = 33;
             this.clientSavebtn.Text = "Save";
             this.clientSavebtn.UseVisualStyleBackColor = true;
+            this.clientSavebtn.Click += new System.EventHandler(this.clientSavebtn_Click);
             // 
             // clientClearBtn
             // 
@@ -466,6 +467,7 @@
             this.clientClearBtn.TabIndex = 34;
             this.clientClearBtn.Text = "Clear";
             this.clientClearBtn.UseVisualStyleBackColor = true;
+            this.clientClearBtn.Click += new System.EventHandler(this.clientClearBtn_Click);
             // 
             // contractorClearBtn
             // 
@@ -476,6 +478,7 @@
             this.contractorClearBtn.TabIndex = 51;
             this.contractorClearBtn.Text = "Clear";
             this.contractorClearBtn.UseVisualStyleBackColor = true;
+            this.contractorClearBtn.Click += new System.EventHandler(this.contractorClearBtn_Click);
             // 
             // contractorSaveBtn
             // 
@@ -486,6 +489,7 @@
             this.contractorSaveBtn.TabIndex = 50;
             this.contractorSaveBtn.Text = "Save";
             this.contractorSaveBtn.UseVisualStyleBackColor = true;
+            this.contractorSaveBtn.Click += new System.EventHandler(this.contractorSaveBtn_Click);
             // 
             // contractorEmailLbl
             // 
@@ -570,6 +574,7 @@
             this.contractorMobileBox.Name = "contractorMobileBox";
             this.contractorMobileBox.Size = new System.Drawing.Size(265, 22);
             this.contractorMobileBox.TabIndex = 41;
+            this.contractorMobileBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.contractorMobileBox_KeyPress);
             // 
             // contractorLandLineBox
             // 
@@ -578,6 +583,7 @@
             this.contractorLandLineBox.Name = "contractorLandLineBox";
             this.contractorLandLineBox.Size = new System.Drawing.Size(265, 22);
             this.contractorLandLineBox.TabIndex = 40;
+            this.contractorLandLineBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.contractorLandLineBox_KeyPress);
             // 
             // contractorAddressBox
             // 

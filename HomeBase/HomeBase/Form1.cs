@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace HomeBase
 {
@@ -52,7 +53,7 @@ namespace HomeBase
         private void save_Click(object sender, EventArgs e)
         {
             //checks if boxes are not empty
-            if (jobDescriptionBox.Text != "" & JobLocationBox.Text != "" & jobTimeBox.Text != "")
+            if (jobDescriptionBox.Text != "" && JobLocationBox.Text != "" && jobTimeBox.Text != "")
             {
                 //opens sql connection
                 con.Open();
@@ -72,16 +73,107 @@ namespace HomeBase
                 diaplay_data();
             }
         }
-        //don't delete it breaks. damm auto generate
-        private void jobLbl_Click(object sender, EventArgs e)
+        private void clientLandLineBox_KeyPress(object sender, KeyPressEventArgs e)
         {
+            //forces textbox to only allow numbers
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void clientMobileBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //forces textbox to only allow numbers
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void contractorLandLineBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //forces textbox to only allow numbers
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void contractorMobileBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //forces textbox to only allow numbers
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void clientSavebtn_Click(object sender, EventArgs e)
+        {
+            //TODO
+            if(clientFirstNameBox.Text != "" && clientLastNameBox.Text != "" && clientAddressBox.Text != "" && 
+                clientLandLineBox.Text != "" && clientMobileBox.Text != "" && clientBuisinessNameBox.Text != "" && clientEmailBox.Text != "")
+            {
+                bool emailVal = EmailValidator(clientEmailBox.Text);
+                if(emailVal == false)
+                {
+                    MessageBox.Show("Please enter a valid email");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please complete all fields for this section");
+            }
+        }
+
+        private void clientClearBtn_Click(object sender, EventArgs e)
+        {
+            clientFirstNameBox.Text = "";
+            clientLastNameBox.Text = "";
+            clientAddressBox.Text = "";
+            clientLandLineBox.Text = "";
+            clientMobileBox.Text = "";
+            clientBuisinessNameBox.Text = "";
+            clientEmailBox.Text = "";
+        }
+
+        private void contractorSaveBtn_Click(object sender, EventArgs e)
+        {
+            //TODO
+            if (contractorFirstNameBox.Text != "" && contractorLastNameBox.Text != "" && contractorAddressBox.Text != "" &&
+                contractorLandLineBox.Text != "" && contractorMobileBox.Text != "" && contractorEmployeeIdBox.Text != "" && contractorEmailBox.Text != "")
+            {
+                bool emailVal = EmailValidator(contractorEmailBox.Text);
+                if (emailVal == false)
+                {
+                    MessageBox.Show("Please enter a valid email");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please complete all fields for this section");
+            }
+        }
+
+        private void contractorClearBtn_Click(object sender, EventArgs e)
+        {
+            contractorFirstNameBox.Text = "";
+            contractorLastNameBox.Text = "";
+            contractorAddressBox.Text = "";
+            contractorLandLineBox.Text = "";
+            contractorMobileBox.Text = "";
+            contractorEmployeeIdBox.Text = "";
+            contractorEmailBox.Text = "";
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
 
-        }
+        public static Boolean EmailValidator(String email)
+        {
+            Regex regex = new Regex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
+            return regex.IsMatch(email);
+        } 
     }
 }
 
