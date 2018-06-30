@@ -52,7 +52,14 @@ namespace HomeBase
                 // Use Linq to query documents
                 var results = clients.Find(x => x.Email.Equals(email));
 
-                return results.First();
+                if (results.Count() > 0)
+                {
+                    return results.First();
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
     }

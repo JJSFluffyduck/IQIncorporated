@@ -33,23 +33,14 @@
             this.jobDescriptionLbl = new System.Windows.Forms.Label();
             this.jobLocationLbl = new System.Windows.Forms.Label();
             this.jobDateLbl = new System.Windows.Forms.Label();
-            this.jobTimeLbl = new System.Windows.Forms.Label();
             this.jobPrioritylbl = new System.Windows.Forms.Label();
             this.jobDateBox = new System.Windows.Forms.DateTimePicker();
             this.jobDescriptionBox = new System.Windows.Forms.TextBox();
             this.JobLocationBox = new System.Windows.Forms.TextBox();
-            this.jobTimeBox = new System.Windows.Forms.TextBox();
             this.jobSaveBtn = new System.Windows.Forms.Button();
             this.jobClearBtn = new System.Windows.Forms.Button();
-            this.jobDataGridView1 = new System.Windows.Forms.DataGridView();
-            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.locationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.timeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priorityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.agileassignment3DataSet = new HomeBase.agileassignment3DataSet();
-            this.jobPriorityBox = new System.Windows.Forms.ComboBox();
             this.tableTableAdapter = new HomeBase.agileassignment3DataSetTableAdapters.TableTableAdapter();
             this.jobLbl = new System.Windows.Forms.Label();
             this.clientLbl = new System.Windows.Forms.Label();
@@ -86,7 +77,13 @@
             this.contractorLastNameBox = new System.Windows.Forms.TextBox();
             this.contractorFirstNameLbl = new System.Windows.Forms.Label();
             this.contractorFirstNameBox = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.jobDataGridView1)).BeginInit();
+            this.jobClientEmailLbl = new System.Windows.Forms.Label();
+            this.jobContractorEmailLbl = new System.Windows.Forms.Label();
+            this.jobClientEmailBox = new System.Windows.Forms.TextBox();
+            this.jobContractorEmailBox = new System.Windows.Forms.TextBox();
+            this.jobPriorityCbx = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.jobTimeBox = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.agileassignment3DataSet)).BeginInit();
             this.SuspendLayout();
@@ -103,7 +100,7 @@
             // jobDescriptionLbl
             // 
             this.jobDescriptionLbl.AutoSize = true;
-            this.jobDescriptionLbl.Location = new System.Drawing.Point(28, 609);
+            this.jobDescriptionLbl.Location = new System.Drawing.Point(35, 703);
             this.jobDescriptionLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.jobDescriptionLbl.Name = "jobDescriptionLbl";
             this.jobDescriptionLbl.Size = new System.Drawing.Size(79, 17);
@@ -113,7 +110,7 @@
             // jobLocationLbl
             // 
             this.jobLocationLbl.AutoSize = true;
-            this.jobLocationLbl.Location = new System.Drawing.Point(28, 708);
+            this.jobLocationLbl.Location = new System.Drawing.Point(574, 607);
             this.jobLocationLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.jobLocationLbl.Name = "jobLocationLbl";
             this.jobLocationLbl.Size = new System.Drawing.Size(62, 17);
@@ -123,27 +120,17 @@
             // jobDateLbl
             // 
             this.jobDateLbl.AutoSize = true;
-            this.jobDateLbl.Location = new System.Drawing.Point(28, 749);
+            this.jobDateLbl.Location = new System.Drawing.Point(574, 675);
             this.jobDateLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.jobDateLbl.Name = "jobDateLbl";
             this.jobDateLbl.Size = new System.Drawing.Size(38, 17);
             this.jobDateLbl.TabIndex = 3;
             this.jobDateLbl.Text = "Date";
             // 
-            // jobTimeLbl
-            // 
-            this.jobTimeLbl.AutoSize = true;
-            this.jobTimeLbl.Location = new System.Drawing.Point(28, 781);
-            this.jobTimeLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.jobTimeLbl.Name = "jobTimeLbl";
-            this.jobTimeLbl.Size = new System.Drawing.Size(39, 17);
-            this.jobTimeLbl.TabIndex = 4;
-            this.jobTimeLbl.Text = "Time";
-            // 
             // jobPrioritylbl
             // 
             this.jobPrioritylbl.AutoSize = true;
-            this.jobPrioritylbl.Location = new System.Drawing.Point(28, 817);
+            this.jobPrioritylbl.Location = new System.Drawing.Point(574, 717);
             this.jobPrioritylbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.jobPrioritylbl.Name = "jobPrioritylbl";
             this.jobPrioritylbl.Size = new System.Drawing.Size(52, 17);
@@ -152,7 +139,8 @@
             // 
             // jobDateBox
             // 
-            this.jobDateBox.Location = new System.Drawing.Point(131, 741);
+            this.jobDateBox.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.jobDateBox.Location = new System.Drawing.Point(686, 670);
             this.jobDateBox.Margin = new System.Windows.Forms.Padding(4);
             this.jobDateBox.Name = "jobDateBox";
             this.jobDateBox.Size = new System.Drawing.Size(265, 22);
@@ -160,7 +148,7 @@
             // 
             // jobDescriptionBox
             // 
-            this.jobDescriptionBox.Location = new System.Drawing.Point(131, 605);
+            this.jobDescriptionBox.Location = new System.Drawing.Point(155, 700);
             this.jobDescriptionBox.Margin = new System.Windows.Forms.Padding(4);
             this.jobDescriptionBox.Multiline = true;
             this.jobDescriptionBox.Name = "jobDescriptionBox";
@@ -169,23 +157,15 @@
             // 
             // JobLocationBox
             // 
-            this.JobLocationBox.Location = new System.Drawing.Point(131, 704);
+            this.JobLocationBox.Location = new System.Drawing.Point(686, 604);
             this.JobLocationBox.Margin = new System.Windows.Forms.Padding(4);
             this.JobLocationBox.Name = "JobLocationBox";
             this.JobLocationBox.Size = new System.Drawing.Size(265, 22);
             this.JobLocationBox.TabIndex = 9;
             // 
-            // jobTimeBox
-            // 
-            this.jobTimeBox.Location = new System.Drawing.Point(131, 777);
-            this.jobTimeBox.Margin = new System.Windows.Forms.Padding(4);
-            this.jobTimeBox.Name = "jobTimeBox";
-            this.jobTimeBox.Size = new System.Drawing.Size(265, 22);
-            this.jobTimeBox.TabIndex = 10;
-            // 
             // jobSaveBtn
             // 
-            this.jobSaveBtn.Location = new System.Drawing.Point(131, 848);
+            this.jobSaveBtn.Location = new System.Drawing.Point(576, 758);
             this.jobSaveBtn.Margin = new System.Windows.Forms.Padding(4);
             this.jobSaveBtn.Name = "jobSaveBtn";
             this.jobSaveBtn.Size = new System.Drawing.Size(100, 31);
@@ -196,7 +176,7 @@
             // 
             // jobClearBtn
             // 
-            this.jobClearBtn.Location = new System.Drawing.Point(276, 848);
+            this.jobClearBtn.Location = new System.Drawing.Point(721, 758);
             this.jobClearBtn.Margin = new System.Windows.Forms.Padding(4);
             this.jobClearBtn.Name = "jobClearBtn";
             this.jobClearBtn.Size = new System.Drawing.Size(100, 31);
@@ -204,64 +184,6 @@
             this.jobClearBtn.Text = "Clear";
             this.jobClearBtn.UseVisualStyleBackColor = true;
             this.jobClearBtn.Click += new System.EventHandler(this.clear_Click);
-            // 
-            // jobDataGridView1
-            // 
-            this.jobDataGridView1.AllowUserToAddRows = false;
-            this.jobDataGridView1.AllowUserToDeleteRows = false;
-            this.jobDataGridView1.AutoGenerateColumns = false;
-            this.jobDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.jobDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.descriptionDataGridViewTextBoxColumn,
-            this.locationDataGridViewTextBoxColumn,
-            this.dateDataGridViewTextBoxColumn,
-            this.timeDataGridViewTextBoxColumn,
-            this.priorityDataGridViewTextBoxColumn});
-            this.jobDataGridView1.DataSource = this.tableBindingSource;
-            this.jobDataGridView1.Location = new System.Drawing.Point(406, 609);
-            this.jobDataGridView1.Margin = new System.Windows.Forms.Padding(4);
-            this.jobDataGridView1.Name = "jobDataGridView1";
-            this.jobDataGridView1.ReadOnly = true;
-            this.jobDataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.jobDataGridView1.RowTemplate.Height = 23;
-            this.jobDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.jobDataGridView1.Size = new System.Drawing.Size(725, 200);
-            this.jobDataGridView1.TabIndex = 14;
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // locationDataGridViewTextBoxColumn
-            // 
-            this.locationDataGridViewTextBoxColumn.DataPropertyName = "Location";
-            this.locationDataGridViewTextBoxColumn.HeaderText = "Location";
-            this.locationDataGridViewTextBoxColumn.Name = "locationDataGridViewTextBoxColumn";
-            this.locationDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dateDataGridViewTextBoxColumn
-            // 
-            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
-            this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
-            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
-            this.dateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // timeDataGridViewTextBoxColumn
-            // 
-            this.timeDataGridViewTextBoxColumn.DataPropertyName = "Time";
-            this.timeDataGridViewTextBoxColumn.HeaderText = "Time";
-            this.timeDataGridViewTextBoxColumn.Name = "timeDataGridViewTextBoxColumn";
-            this.timeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // priorityDataGridViewTextBoxColumn
-            // 
-            this.priorityDataGridViewTextBoxColumn.DataPropertyName = "Priority";
-            this.priorityDataGridViewTextBoxColumn.HeaderText = "Priority";
-            this.priorityDataGridViewTextBoxColumn.Name = "priorityDataGridViewTextBoxColumn";
-            this.priorityDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // tableBindingSource
             // 
@@ -272,18 +194,6 @@
             // 
             this.agileassignment3DataSet.DataSetName = "agileassignment3DataSet";
             this.agileassignment3DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // jobPriorityBox
-            // 
-            this.jobPriorityBox.FormattingEnabled = true;
-            this.jobPriorityBox.Items.AddRange(new object[] {
-            "Yes",
-            "No"});
-            this.jobPriorityBox.Location = new System.Drawing.Point(131, 813);
-            this.jobPriorityBox.Margin = new System.Windows.Forms.Padding(4);
-            this.jobPriorityBox.Name = "jobPriorityBox";
-            this.jobPriorityBox.Size = new System.Drawing.Size(160, 24);
-            this.jobPriorityBox.TabIndex = 15;
             // 
             // tableTableAdapter
             // 
@@ -619,11 +529,84 @@
             this.contractorFirstNameBox.Size = new System.Drawing.Size(265, 22);
             this.contractorFirstNameBox.TabIndex = 36;
             // 
+            // jobClientEmailLbl
+            // 
+            this.jobClientEmailLbl.AutoSize = true;
+            this.jobClientEmailLbl.Location = new System.Drawing.Point(35, 607);
+            this.jobClientEmailLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.jobClientEmailLbl.Name = "jobClientEmailLbl";
+            this.jobClientEmailLbl.Size = new System.Drawing.Size(81, 17);
+            this.jobClientEmailLbl.TabIndex = 52;
+            this.jobClientEmailLbl.Text = "Client Email";
+            // 
+            // jobContractorEmailLbl
+            // 
+            this.jobContractorEmailLbl.AutoSize = true;
+            this.jobContractorEmailLbl.Location = new System.Drawing.Point(35, 654);
+            this.jobContractorEmailLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.jobContractorEmailLbl.Name = "jobContractorEmailLbl";
+            this.jobContractorEmailLbl.Size = new System.Drawing.Size(112, 17);
+            this.jobContractorEmailLbl.TabIndex = 53;
+            this.jobContractorEmailLbl.Text = "Contractor Email";
+            // 
+            // jobClientEmailBox
+            // 
+            this.jobClientEmailBox.Location = new System.Drawing.Point(155, 602);
+            this.jobClientEmailBox.Margin = new System.Windows.Forms.Padding(4);
+            this.jobClientEmailBox.Name = "jobClientEmailBox";
+            this.jobClientEmailBox.Size = new System.Drawing.Size(265, 22);
+            this.jobClientEmailBox.TabIndex = 54;
+            // 
+            // jobContractorEmailBox
+            // 
+            this.jobContractorEmailBox.Location = new System.Drawing.Point(155, 651);
+            this.jobContractorEmailBox.Margin = new System.Windows.Forms.Padding(4);
+            this.jobContractorEmailBox.Name = "jobContractorEmailBox";
+            this.jobContractorEmailBox.Size = new System.Drawing.Size(265, 22);
+            this.jobContractorEmailBox.TabIndex = 55;
+            // 
+            // jobPriorityCbx
+            // 
+            this.jobPriorityCbx.AutoSize = true;
+            this.jobPriorityCbx.Location = new System.Drawing.Point(686, 716);
+            this.jobPriorityCbx.Name = "jobPriorityCbx";
+            this.jobPriorityCbx.Size = new System.Drawing.Size(107, 21);
+            this.jobPriorityCbx.TabIndex = 56;
+            this.jobPriorityCbx.Text = "High Priority";
+            this.jobPriorityCbx.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(574, 638);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(39, 17);
+            this.label1.TabIndex = 57;
+            this.label1.Text = "Time";
+            // 
+            // jobTimeBox
+            // 
+            this.jobTimeBox.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.jobTimeBox.Location = new System.Drawing.Point(686, 633);
+            this.jobTimeBox.Margin = new System.Windows.Forms.Padding(4);
+            this.jobTimeBox.Name = "jobTimeBox";
+            this.jobTimeBox.ShowUpDown = true;
+            this.jobTimeBox.Size = new System.Drawing.Size(265, 22);
+            this.jobTimeBox.TabIndex = 58;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1159, 901);
+            this.Controls.Add(this.jobTimeBox);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.jobPriorityCbx);
+            this.Controls.Add(this.jobContractorEmailBox);
+            this.Controls.Add(this.jobClientEmailBox);
+            this.Controls.Add(this.jobContractorEmailLbl);
+            this.Controls.Add(this.jobClientEmailLbl);
             this.Controls.Add(this.contractorClearBtn);
             this.Controls.Add(this.contractorSaveBtn);
             this.Controls.Add(this.contractorEmailLbl);
@@ -659,16 +642,12 @@
             this.Controls.Add(this.contractorLbl);
             this.Controls.Add(this.clientLbl);
             this.Controls.Add(this.jobLbl);
-            this.Controls.Add(this.jobPriorityBox);
-            this.Controls.Add(this.jobDataGridView1);
             this.Controls.Add(this.jobClearBtn);
             this.Controls.Add(this.jobSaveBtn);
-            this.Controls.Add(this.jobTimeBox);
             this.Controls.Add(this.JobLocationBox);
             this.Controls.Add(this.jobDescriptionBox);
             this.Controls.Add(this.jobDateBox);
             this.Controls.Add(this.jobPrioritylbl);
-            this.Controls.Add(this.jobTimeLbl);
             this.Controls.Add(this.jobDateLbl);
             this.Controls.Add(this.jobLocationLbl);
             this.Controls.Add(this.jobDescriptionLbl);
@@ -677,7 +656,6 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.jobDataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.agileassignment3DataSet)).EndInit();
             this.ResumeLayout(false);
@@ -691,24 +669,15 @@
         private System.Windows.Forms.Label jobDescriptionLbl;
         private System.Windows.Forms.Label jobLocationLbl;
         private System.Windows.Forms.Label jobDateLbl;
-        private System.Windows.Forms.Label jobTimeLbl;
         private System.Windows.Forms.Label jobPrioritylbl;
         private System.Windows.Forms.DateTimePicker jobDateBox;
         private System.Windows.Forms.TextBox jobDescriptionBox;
         private System.Windows.Forms.TextBox JobLocationBox;
-        private System.Windows.Forms.TextBox jobTimeBox;
         private System.Windows.Forms.Button jobSaveBtn;
         private System.Windows.Forms.Button jobClearBtn;
-        private System.Windows.Forms.DataGridView jobDataGridView1;
-        private System.Windows.Forms.ComboBox jobPriorityBox;
         private agileassignment3DataSet agileassignment3DataSet;
         private System.Windows.Forms.BindingSource tableBindingSource;
         private agileassignment3DataSetTableAdapters.TableTableAdapter tableTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn locationDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn timeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn priorityDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label jobLbl;
         private System.Windows.Forms.Label clientLbl;
         private System.Windows.Forms.Label contractorLbl;
@@ -744,6 +713,13 @@
         private System.Windows.Forms.TextBox contractorLastNameBox;
         private System.Windows.Forms.Label contractorFirstNameLbl;
         private System.Windows.Forms.TextBox contractorFirstNameBox;
+        private System.Windows.Forms.Label jobClientEmailLbl;
+        private System.Windows.Forms.Label jobContractorEmailLbl;
+        private System.Windows.Forms.TextBox jobClientEmailBox;
+        private System.Windows.Forms.TextBox jobContractorEmailBox;
+        private System.Windows.Forms.CheckBox jobPriorityCbx;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DateTimePicker jobTimeBox;
     }
 }
 
