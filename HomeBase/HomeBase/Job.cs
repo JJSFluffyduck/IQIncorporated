@@ -53,7 +53,14 @@ namespace HomeBase
                 // Use Linq to query documents
                 var results = jobs.Find(x => x.ClientID.Equals(clientID) && x.ContractorID.Equals(contractorID));
 
-                return results.First();
+                if (results.Count() > 0)
+                {
+                    return results.First();
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
     }

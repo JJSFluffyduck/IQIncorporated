@@ -31,11 +31,11 @@ namespace HomeBase
 
         private void clear_Click(object sender, EventArgs e)
         {
+            jobClientEmailBox.Clear();
+            jobContractorEmailBox.Clear();
             jobDescriptionBox.Clear();
             jobDateBox.Refresh();
             JobLocationBox.Clear();
-            jobTimeBox.Clear();
-            jobPriorityBox.Refresh();
 
             // Open database (or create if not exits)
             using (var db = new LiteDatabase(@"IQIncorporated.db"))
@@ -50,53 +50,48 @@ namespace HomeBase
 
             }
         }
-        public void diaplay_data()
-        {
-            //Load data
-            //to do
-        }
+
         private void save_Click(object sender, EventArgs e)
         {
-            Client clientTable = new Client();
-
-            clientTable.AddClient("Jack Hall", "1 adelaide road", "82838383", "0443434323", "ha11", "haljy021@mymail.unisa.edu.au");
-            System.Diagnostics.Debug.WriteLine(clientTable.GetClient("haljy021@mymail.unisa.edu.au").Email);
-
-            Contractor contractorTable = new Contractor();
-
-            contractorTable.AddContractor("Hall Jack", "90 Vic road", "83749785", "047294343", "01", "Jack@mymail.unisa.edu.au");
-            System.Diagnostics.Debug.WriteLine(contractorTable.GetContractor("Jack@mymail.unisa.edu.au").Email);
-
-            Job jobTable = new Job();
-
-            jobTable.AddJob(clientTable.GetClient("haljy021@mymail.unisa.edu.au").ID, contractorTable.GetContractor("Jack@mymail.unisa.edu.au").ID, "FIx computer", "7 Melbourne street", DateTime.Now, true);
-            System.Diagnostics.Debug.WriteLine(jobTable.GetJob(clientTable.GetClient("haljy021@mymail.unisa.edu.au").ID, contractorTable.GetContractor("Jack@mymail.unisa.edu.au").ID).Description);
-            System.Diagnostics.Debug.WriteLine(jobTable.GetJob(clientTable.GetClient("haljy021@mymail.unisa.edu.au").ID, contractorTable.GetContractor("Jack@mymail.unisa.edu.au").ID).ClientID);
-            System.Diagnostics.Debug.WriteLine(jobTable.GetJob(clientTable.GetClient("haljy021@mymail.unisa.edu.au").ID, contractorTable.GetContractor("Jack@mymail.unisa.edu.au").ID).ContractorID);
-
-            //TODO
-            if (clientFirstNameBox.Text != "" && clientLastNameBox.Text != "" && clientAddressBox.Text != "" &&
-                clientLandLineBox.Text != "" && clientMobileBox.Text != "" && clientBuisinessNameBox.Text != "" && clientEmailBox.Text != "")
+            if(jobClientEmailBox.Text != "" && jobContractorEmailBox.Text != "" && jobDescriptionBox.Text != ""
+                && jobDateBox.Text != "" && JobLocationBox.Text != "")
             {
-                bool emailVal = EmailValidator(clientEmailBox.Text);
-                if (emailVal == false)
+                bool contractorEmailVal = EmailValidator(jobContractorEmailBox.Text);
+                bool clientEmailVal = EmailValidator(jobClientEmailBox.Text);
+                if (contractorEmailVal == false || clientEmailVal == false)
                 {
-                    MessageBox.Show("Please enter a valid email");
+                    MessageBox.Show("Please enter Valid Emails");
                 }
+                else
+                {
+                    Client clientTable = new Client();
+                    Contractor contractorTable = new Contractor();
+                    DateTime jobDateTime = new DateTime(jobDateBox.Value.Year, jobDateBox.Value.Month, 
+                        jobDateBox.Value.Day, jobTimeBox.Value.Hour, jobTimeBox.Value.Minute, jobTimeBox.Value.Second);
+
+                    Job jobTable = new Job();
+                    //checks if entered email is in the database
+                    if(clientTable.GetClient(jobClientEmailBox.Text) == null || 
+                        contractorTable.GetContractor(jobContractorEmailBox.Text) == null)
+                    {
+                        MessageBox.Show("Email/'s not in database, please check spelling and try again");
+                    }
+                    else
+                    {
+                        jobTable.AddJob(clientTable.GetClient(jobClientEmailBox.Text).ID, 
+                            contractorTable.GetContractor(jobContractorEmailBox.Text).ID,
+                            jobDescriptionBox.Text, JobLocationBox.Text, jobDateTime , jobPriorityCbx.Checked);
+                    }
+                    
+                }
+               
             }
             else
             {
-                MessageBox.Show("Please complete all fields for this section");
+                MessageBox.Show("Please Complete all fields");
             }
 
-            //clears the input fields
-                jobDescriptionBox.Clear();
-                jobDateBox.Refresh();
-                JobLocationBox.Clear();
-                jobTimeBox.Clear();
-                jobPriorityBox.ResetText();
-                diaplay_data();
-            }
+        }
         
         private void clientLandLineBox_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -137,14 +132,26 @@ namespace HomeBase
         private void clientSavebtn_Click(object sender, EventArgs e)
         {
             //TODO
+            //checks if any of the fields are empty
             if(clientFirstNameBox.Text != "" && clientLastNameBox.Text != "" && clientAddressBox.Text != "" && 
                 clientLandLineBox.Text != "" && clientMobileBox.Text != "" && clientBuisinessNameBox.Text != "" && clientEmailBox.Text != "")
             {
+                //runs the valid email function
                 bool emailVal = EmailValidator(clientEmailBox.Text);
                 if(emailVal == false)
                 {
                     MessageBox.Show("Please enter a valid email");
                 }
+                else
+                {
+                    //adds the info in the fields into the database
+                    Client clientTable = new Client();
+                    clientTable.AddClient(clientFirstNameBox.Text + " " + clientLastNameBox.Text,
+                        clientAddressBox.Text, clientLandLineBox.Text, 
+                        clientMobileBox.Text, clientBuisinessNameBox.Text, clientEmailBox.Text);
+                }
+                
+
             }
             else
             {
@@ -154,6 +161,7 @@ namespace HomeBase
 
         private void clientClearBtn_Click(object sender, EventArgs e)
         {
+            //clears the fields
             clientFirstNameBox.Text = "";
             clientLastNameBox.Text = "";
             clientAddressBox.Text = "";
@@ -165,15 +173,24 @@ namespace HomeBase
 
         private void contractorSaveBtn_Click(object sender, EventArgs e)
         {
-            //TODO
+            //checks if any of the fields are empty
             if (contractorFirstNameBox.Text != "" && contractorLastNameBox.Text != "" && contractorAddressBox.Text != "" &&
                 contractorLandLineBox.Text != "" && contractorMobileBox.Text != "" && contractorEmployeeIdBox.Text != "" && contractorEmailBox.Text != "")
             {
+                //runs the valid email function
                 bool emailVal = EmailValidator(contractorEmailBox.Text);
                 if (emailVal == false)
                 {
                     MessageBox.Show("Please enter a valid email");
                 }
+                else
+                {
+                    Contractor contractorTable = new Contractor();
+                    contractorTable.AddContractor(contractorFirstNameBox.Text + " " + contractorLastNameBox.Text,
+                        contractorAddressBox.Text, contractorLandLineBox.Text,
+                        contractorMobileBox.Text, contractorEmployeeIdBox.Text, contractorEmailBox.Text);
+                }
+
             }
             else
             {
@@ -183,6 +200,7 @@ namespace HomeBase
 
         private void contractorClearBtn_Click(object sender, EventArgs e)
         {
+            //clears the fields
             contractorFirstNameBox.Text = "";
             contractorLastNameBox.Text = "";
             contractorAddressBox.Text = "";
@@ -193,12 +211,12 @@ namespace HomeBase
 
         }
 
-
+        //makes sure entered emails are valid
         public static Boolean EmailValidator(String email)
         {
             Regex regex = new Regex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
             return regex.IsMatch(email);
-        } 
+        }
     }
 }
 
