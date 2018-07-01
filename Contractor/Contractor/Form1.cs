@@ -131,6 +131,10 @@ namespace Contractor
                 MobileOutput.Text = "";
                 BusinessOutput.Text = "";
                 EmailOutput.Text = "";
+
+                CompleteCost.Text = "";
+                CompleteDescription.Text = "";
+                FinishedCheck.Checked = false;
             }
 
         }
@@ -169,6 +173,16 @@ namespace Contractor
         }
 
         private void ClientLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CompleteSave_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Invoice_Click(object sender, EventArgs e)
         {
 
         }

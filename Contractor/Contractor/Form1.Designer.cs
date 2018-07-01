@@ -62,11 +62,21 @@
             this.EmailOutput = new System.Windows.Forms.Label();
             this.Email = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.JobID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CompleteLabel = new System.Windows.Forms.Label();
+            this.CompleteCost = new System.Windows.Forms.TextBox();
+            this.jobContractorEmailLbl = new System.Windows.Forms.Label();
+            this.jobClientEmailLbl = new System.Windows.Forms.Label();
+            this.FinishedCheck = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.CompleteDescription = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.CompleteSave = new System.Windows.Forms.Button();
+            this.Invoice = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ExportButton
             // 
-            this.ExportButton.Location = new System.Drawing.Point(1075, 867);
+            this.ExportButton.Location = new System.Drawing.Point(1506, 1022);
             this.ExportButton.Name = "ExportButton";
             this.ExportButton.Size = new System.Drawing.Size(136, 56);
             this.ExportButton.TabIndex = 0;
@@ -76,7 +86,7 @@
             // 
             // ImportButton
             // 
-            this.ImportButton.Location = new System.Drawing.Point(916, 867);
+            this.ImportButton.Location = new System.Drawing.Point(1344, 1022);
             this.ImportButton.Name = "ImportButton";
             this.ImportButton.Size = new System.Drawing.Size(136, 56);
             this.ImportButton.TabIndex = 3;
@@ -92,9 +102,9 @@
             this.Priority,
             this.Email,
             this.JobID});
-            this.JobListView.Location = new System.Drawing.Point(496, 214);
+            this.JobListView.Location = new System.Drawing.Point(765, 164);
             this.JobListView.Name = "JobListView";
-            this.JobListView.Size = new System.Drawing.Size(715, 633);
+            this.JobListView.Size = new System.Drawing.Size(877, 843);
             this.JobListView.TabIndex = 4;
             this.JobListView.UseCompatibleStateImageBehavior = false;
             this.JobListView.View = System.Windows.Forms.View.Details;
@@ -119,7 +129,7 @@
             // 
             this.jobLbl.AutoSize = true;
             this.jobLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.jobLbl.Location = new System.Drawing.Point(485, 77);
+            this.jobLbl.Location = new System.Drawing.Point(754, 31);
             this.jobLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.jobLbl.Name = "jobLbl";
             this.jobLbl.Size = new System.Drawing.Size(211, 63);
@@ -129,7 +139,7 @@
             // contractorEmailLbl
             // 
             this.contractorEmailLbl.AutoSize = true;
-            this.contractorEmailLbl.Location = new System.Drawing.Point(491, 174);
+            this.contractorEmailLbl.Location = new System.Drawing.Point(760, 124);
             this.contractorEmailLbl.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.contractorEmailLbl.Name = "contractorEmailLbl";
             this.contractorEmailLbl.Size = new System.Drawing.Size(133, 25);
@@ -138,10 +148,10 @@
             // 
             // contractorID
             // 
-            this.contractorID.Location = new System.Drawing.Point(636, 174);
+            this.contractorID.Location = new System.Drawing.Point(905, 124);
             this.contractorID.Margin = new System.Windows.Forms.Padding(6);
             this.contractorID.Name = "contractorID";
-            this.contractorID.Size = new System.Drawing.Size(575, 31);
+            this.contractorID.Size = new System.Drawing.Size(737, 31);
             this.contractorID.TabIndex = 50;
             this.contractorID.TextChanged += new System.EventHandler(this.contractorID_TextChanged);
             // 
@@ -149,7 +159,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(39, 77);
+            this.label1.Location = new System.Drawing.Point(39, 22);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(310, 63);
@@ -161,7 +171,7 @@
             // 
             this.ClientLabel.AutoSize = true;
             this.ClientLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ClientLabel.Location = new System.Drawing.Point(39, 464);
+            this.ClientLabel.Location = new System.Drawing.Point(39, 327);
             this.ClientLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ClientLabel.Name = "ClientLabel";
             this.ClientLabel.Size = new System.Drawing.Size(363, 63);
@@ -172,7 +182,7 @@
             // jobDescriptionLbl
             // 
             this.jobDescriptionLbl.AutoSize = true;
-            this.jobDescriptionLbl.Location = new System.Drawing.Point(45, 180);
+            this.jobDescriptionLbl.Location = new System.Drawing.Point(45, 115);
             this.jobDescriptionLbl.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.jobDescriptionLbl.Name = "jobDescriptionLbl";
             this.jobDescriptionLbl.Size = new System.Drawing.Size(120, 25);
@@ -182,7 +192,7 @@
             // DescriptionOutput
             // 
             this.DescriptionOutput.AutoSize = true;
-            this.DescriptionOutput.Location = new System.Drawing.Point(201, 180);
+            this.DescriptionOutput.Location = new System.Drawing.Point(201, 115);
             this.DescriptionOutput.Name = "DescriptionOutput";
             this.DescriptionOutput.Size = new System.Drawing.Size(184, 25);
             this.DescriptionOutput.TabIndex = 55;
@@ -191,7 +201,7 @@
             // jobLocationLbl
             // 
             this.jobLocationLbl.AutoSize = true;
-            this.jobLocationLbl.Location = new System.Drawing.Point(45, 247);
+            this.jobLocationLbl.Location = new System.Drawing.Point(45, 167);
             this.jobLocationLbl.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.jobLocationLbl.Name = "jobLocationLbl";
             this.jobLocationLbl.Size = new System.Drawing.Size(94, 25);
@@ -201,7 +211,7 @@
             // LocationOutput
             // 
             this.LocationOutput.AutoSize = true;
-            this.LocationOutput.Location = new System.Drawing.Point(201, 247);
+            this.LocationOutput.Location = new System.Drawing.Point(201, 167);
             this.LocationOutput.Name = "LocationOutput";
             this.LocationOutput.Size = new System.Drawing.Size(158, 25);
             this.LocationOutput.TabIndex = 57;
@@ -210,7 +220,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(45, 308);
+            this.label2.Location = new System.Drawing.Point(51, 223);
             this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 25);
@@ -220,7 +230,7 @@
             // TimeOutput
             // 
             this.TimeOutput.AutoSize = true;
-            this.TimeOutput.Location = new System.Drawing.Point(201, 308);
+            this.TimeOutput.Location = new System.Drawing.Point(201, 223);
             this.TimeOutput.Name = "TimeOutput";
             this.TimeOutput.Size = new System.Drawing.Size(123, 25);
             this.TimeOutput.TabIndex = 59;
@@ -229,7 +239,7 @@
             // jobPrioritylbl
             // 
             this.jobPrioritylbl.AutoSize = true;
-            this.jobPrioritylbl.Location = new System.Drawing.Point(45, 379);
+            this.jobPrioritylbl.Location = new System.Drawing.Point(51, 275);
             this.jobPrioritylbl.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.jobPrioritylbl.Name = "jobPrioritylbl";
             this.jobPrioritylbl.Size = new System.Drawing.Size(79, 25);
@@ -240,7 +250,7 @@
             // 
             this.PriorityOutput.AutoCheck = false;
             this.PriorityOutput.AutoSize = true;
-            this.PriorityOutput.Location = new System.Drawing.Point(206, 379);
+            this.PriorityOutput.Location = new System.Drawing.Point(206, 275);
             this.PriorityOutput.Name = "PriorityOutput";
             this.PriorityOutput.Size = new System.Drawing.Size(28, 27);
             this.PriorityOutput.TabIndex = 61;
@@ -249,7 +259,7 @@
             // clientEmailLbl
             // 
             this.clientEmailLbl.AutoSize = true;
-            this.clientEmailLbl.Location = new System.Drawing.Point(45, 845);
+            this.clientEmailLbl.Location = new System.Drawing.Point(54, 670);
             this.clientEmailLbl.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.clientEmailLbl.Name = "clientEmailLbl";
             this.clientEmailLbl.Size = new System.Drawing.Size(65, 25);
@@ -259,7 +269,7 @@
             // clientBuisinessNameLbl
             // 
             this.clientBuisinessNameLbl.AutoSize = true;
-            this.clientBuisinessNameLbl.Location = new System.Drawing.Point(45, 783);
+            this.clientBuisinessNameLbl.Location = new System.Drawing.Point(51, 621);
             this.clientBuisinessNameLbl.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.clientBuisinessNameLbl.Name = "clientBuisinessNameLbl";
             this.clientBuisinessNameLbl.Size = new System.Drawing.Size(100, 25);
@@ -269,7 +279,7 @@
             // clientMobilelbl
             // 
             this.clientMobilelbl.AutoSize = true;
-            this.clientMobilelbl.Location = new System.Drawing.Point(49, 727);
+            this.clientMobilelbl.Location = new System.Drawing.Point(51, 570);
             this.clientMobilelbl.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.clientMobilelbl.Name = "clientMobilelbl";
             this.clientMobilelbl.Size = new System.Drawing.Size(94, 25);
@@ -279,7 +289,7 @@
             // clientLandLineLbl
             // 
             this.clientLandLineLbl.AutoSize = true;
-            this.clientLandLineLbl.Location = new System.Drawing.Point(49, 673);
+            this.clientLandLineLbl.Location = new System.Drawing.Point(51, 516);
             this.clientLandLineLbl.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.clientLandLineLbl.Name = "clientLandLineLbl";
             this.clientLandLineLbl.Size = new System.Drawing.Size(125, 25);
@@ -289,7 +299,7 @@
             // clientAddressLbl
             // 
             this.clientAddressLbl.AutoSize = true;
-            this.clientAddressLbl.Location = new System.Drawing.Point(49, 620);
+            this.clientAddressLbl.Location = new System.Drawing.Point(51, 459);
             this.clientAddressLbl.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.clientAddressLbl.Name = "clientAddressLbl";
             this.clientAddressLbl.Size = new System.Drawing.Size(91, 25);
@@ -299,7 +309,7 @@
             // clientFirstNameLbl
             // 
             this.clientFirstNameLbl.AutoSize = true;
-            this.clientFirstNameLbl.Location = new System.Drawing.Point(49, 566);
+            this.clientFirstNameLbl.Location = new System.Drawing.Point(51, 411);
             this.clientFirstNameLbl.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.clientFirstNameLbl.Name = "clientFirstNameLbl";
             this.clientFirstNameLbl.Size = new System.Drawing.Size(68, 25);
@@ -319,7 +329,7 @@
             // NameOutput
             // 
             this.NameOutput.AutoSize = true;
-            this.NameOutput.Location = new System.Drawing.Point(201, 566);
+            this.NameOutput.Location = new System.Drawing.Point(201, 411);
             this.NameOutput.Name = "NameOutput";
             this.NameOutput.Size = new System.Drawing.Size(132, 25);
             this.NameOutput.TabIndex = 69;
@@ -328,7 +338,7 @@
             // AddressOutput
             // 
             this.AddressOutput.AutoSize = true;
-            this.AddressOutput.Location = new System.Drawing.Point(201, 620);
+            this.AddressOutput.Location = new System.Drawing.Point(204, 459);
             this.AddressOutput.Name = "AddressOutput";
             this.AddressOutput.Size = new System.Drawing.Size(155, 25);
             this.AddressOutput.TabIndex = 70;
@@ -337,7 +347,7 @@
             // LandLineOutput
             // 
             this.LandLineOutput.AutoSize = true;
-            this.LandLineOutput.Location = new System.Drawing.Point(201, 673);
+            this.LandLineOutput.Location = new System.Drawing.Point(204, 516);
             this.LandLineOutput.Name = "LandLineOutput";
             this.LandLineOutput.Size = new System.Drawing.Size(165, 25);
             this.LandLineOutput.TabIndex = 71;
@@ -346,7 +356,7 @@
             // MobileOutput
             // 
             this.MobileOutput.AutoSize = true;
-            this.MobileOutput.Location = new System.Drawing.Point(201, 727);
+            this.MobileOutput.Location = new System.Drawing.Point(204, 570);
             this.MobileOutput.Name = "MobileOutput";
             this.MobileOutput.Size = new System.Drawing.Size(140, 25);
             this.MobileOutput.TabIndex = 72;
@@ -355,7 +365,7 @@
             // BusinessOutput
             // 
             this.BusinessOutput.AutoSize = true;
-            this.BusinessOutput.Location = new System.Drawing.Point(201, 783);
+            this.BusinessOutput.Location = new System.Drawing.Point(201, 621);
             this.BusinessOutput.Name = "BusinessOutput";
             this.BusinessOutput.Size = new System.Drawing.Size(164, 25);
             this.BusinessOutput.TabIndex = 73;
@@ -364,7 +374,7 @@
             // EmailOutput
             // 
             this.EmailOutput.AutoSize = true;
-            this.EmailOutput.Location = new System.Drawing.Point(201, 845);
+            this.EmailOutput.Location = new System.Drawing.Point(201, 670);
             this.EmailOutput.Name = "EmailOutput";
             this.EmailOutput.Size = new System.Drawing.Size(129, 25);
             this.EmailOutput.TabIndex = 74;
@@ -378,11 +388,118 @@
             // 
             this.JobID.Text = "Job Number";
             // 
+            // CompleteLabel
+            // 
+            this.CompleteLabel.AutoSize = true;
+            this.CompleteLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CompleteLabel.Location = new System.Drawing.Point(39, 710);
+            this.CompleteLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.CompleteLabel.Name = "CompleteLabel";
+            this.CompleteLabel.Size = new System.Drawing.Size(317, 63);
+            this.CompleteLabel.TabIndex = 75;
+            this.CompleteLabel.Text = "Completion:";
+            // 
+            // CompleteCost
+            // 
+            this.CompleteCost.Location = new System.Drawing.Point(206, 784);
+            this.CompleteCost.Margin = new System.Windows.Forms.Padding(6);
+            this.CompleteCost.Name = "CompleteCost";
+            this.CompleteCost.Size = new System.Drawing.Size(514, 31);
+            this.CompleteCost.TabIndex = 78;
+            // 
+            // jobContractorEmailLbl
+            // 
+            this.jobContractorEmailLbl.AutoSize = true;
+            this.jobContractorEmailLbl.Location = new System.Drawing.Point(54, 835);
+            this.jobContractorEmailLbl.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.jobContractorEmailLbl.Name = "jobContractorEmailLbl";
+            this.jobContractorEmailLbl.Size = new System.Drawing.Size(120, 25);
+            this.jobContractorEmailLbl.TabIndex = 77;
+            this.jobContractorEmailLbl.Text = "Description";
+            // 
+            // jobClientEmailLbl
+            // 
+            this.jobClientEmailLbl.AutoSize = true;
+            this.jobClientEmailLbl.Location = new System.Drawing.Point(51, 790);
+            this.jobClientEmailLbl.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.jobClientEmailLbl.Name = "jobClientEmailLbl";
+            this.jobClientEmailLbl.Size = new System.Drawing.Size(56, 25);
+            this.jobClientEmailLbl.TabIndex = 76;
+            this.jobClientEmailLbl.Text = "Cost";
+            // 
+            // FinishedCheck
+            // 
+            this.FinishedCheck.AutoSize = true;
+            this.FinishedCheck.Location = new System.Drawing.Point(206, 955);
+            this.FinishedCheck.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.FinishedCheck.Name = "FinishedCheck";
+            this.FinishedCheck.Size = new System.Drawing.Size(28, 27);
+            this.FinishedCheck.TabIndex = 81;
+            this.FinishedCheck.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(57, 957);
+            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(94, 25);
+            this.label4.TabIndex = 80;
+            this.label4.Text = "Finished";
+            // 
+            // CompleteDescription
+            // 
+            this.CompleteDescription.Location = new System.Drawing.Point(206, 835);
+            this.CompleteDescription.Margin = new System.Windows.Forms.Padding(6);
+            this.CompleteDescription.Multiline = true;
+            this.CompleteDescription.Name = "CompleteDescription";
+            this.CompleteDescription.Size = new System.Drawing.Size(514, 111);
+            this.CompleteDescription.TabIndex = 82;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(201, 784);
+            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(0, 25);
+            this.label5.TabIndex = 83;
+            // 
+            // CompleteSave
+            // 
+            this.CompleteSave.Location = new System.Drawing.Point(55, 1022);
+            this.CompleteSave.Name = "CompleteSave";
+            this.CompleteSave.Size = new System.Drawing.Size(136, 56);
+            this.CompleteSave.TabIndex = 85;
+            this.CompleteSave.Text = "Save";
+            this.CompleteSave.UseVisualStyleBackColor = true;
+            this.CompleteSave.Click += new System.EventHandler(this.CompleteSave_Click);
+            // 
+            // Invoice
+            // 
+            this.Invoice.Location = new System.Drawing.Point(206, 1022);
+            this.Invoice.Name = "Invoice";
+            this.Invoice.Size = new System.Drawing.Size(136, 56);
+            this.Invoice.TabIndex = 84;
+            this.Invoice.Text = "Invoice";
+            this.Invoice.UseVisualStyleBackColor = true;
+            this.Invoice.Click += new System.EventHandler(this.Invoice_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1249, 950);
+            this.ClientSize = new System.Drawing.Size(1717, 1096);
+            this.Controls.Add(this.CompleteSave);
+            this.Controls.Add(this.Invoice);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.CompleteDescription);
+            this.Controls.Add(this.FinishedCheck);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.CompleteCost);
+            this.Controls.Add(this.jobContractorEmailLbl);
+            this.Controls.Add(this.jobClientEmailLbl);
+            this.Controls.Add(this.CompleteLabel);
             this.Controls.Add(this.EmailOutput);
             this.Controls.Add(this.BusinessOutput);
             this.Controls.Add(this.MobileOutput);
@@ -455,6 +572,16 @@
         private System.Windows.Forms.Label EmailOutput;
         private System.Windows.Forms.ColumnHeader Email;
         private System.Windows.Forms.ColumnHeader JobID;
+        private System.Windows.Forms.Label CompleteLabel;
+        private System.Windows.Forms.TextBox CompleteCost;
+        private System.Windows.Forms.Label jobContractorEmailLbl;
+        private System.Windows.Forms.Label jobClientEmailLbl;
+        private System.Windows.Forms.CheckBox FinishedCheck;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox CompleteDescription;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button CompleteSave;
+        private System.Windows.Forms.Button Invoice;
     }
 }
 
