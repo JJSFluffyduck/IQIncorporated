@@ -36,19 +36,6 @@ namespace HomeBase
             jobDescriptionBox.Clear();
             jobDateBox.Refresh();
             JobLocationBox.Clear();
-
-            // Open database (or create if not exits)
-            using (var db = new LiteDatabase(@"IQIncorporated.db"))
-            {
-                string clients = JsonSerializer.Serialize(new BsonArray(db.Engine.FindAll("clients")));
-                string contractors = JsonSerializer.Serialize(new BsonArray(db.Engine.FindAll("contractors")));
-                string jobs = JsonSerializer.Serialize(new BsonArray(db.Engine.FindAll("jobs")));
-
-                string FormatedOutput = clients +Environment.NewLine+ contractors + Environment.NewLine + jobs;
-
-                File.WriteAllText(@"C:\Users\jackh\Uni\Agile\ExportTest\test.json", FormatedOutput);
-
-            }
         }
 
         private void save_Click(object sender, EventArgs e)
@@ -81,8 +68,11 @@ namespace HomeBase
                         jobTable.AddJob(clientTable.GetClient(jobClientEmailBox.Text).ID, 
                             contractorTable.GetContractor(jobContractorEmailBox.Text).ID,
                             jobDescriptionBox.Text, JobLocationBox.Text, jobDateTime , jobPriorityCbx.Checked);
+
+                        MessageBox.Show("Saved Successfully");
+
                     }
-                    
+
                 }
                
             }
@@ -149,8 +139,10 @@ namespace HomeBase
                     clientTable.AddClient(clientFirstNameBox.Text + " " + clientLastNameBox.Text,
                         clientAddressBox.Text, clientLandLineBox.Text, 
                         clientMobileBox.Text, clientBuisinessNameBox.Text, clientEmailBox.Text);
+
+                    MessageBox.Show("Saved Successfully");
                 }
-                
+
 
             }
             else
@@ -189,6 +181,8 @@ namespace HomeBase
                     contractorTable.AddContractor(contractorFirstNameBox.Text + " " + contractorLastNameBox.Text,
                         contractorAddressBox.Text, contractorLandLineBox.Text,
                         contractorMobileBox.Text, contractorEmployeeIdBox.Text, contractorEmailBox.Text);
+
+                    MessageBox.Show("Saved Successfully");
                 }
 
             }
@@ -216,6 +210,75 @@ namespace HomeBase
         {
             Regex regex = new Regex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
             return regex.IsMatch(email);
+        }
+
+        private void ExportButton_Click(object sender, EventArgs e)
+        {
+            // export data TO JSON
+            using (var db = new LiteDatabase(@"IQIncorporated.db"))
+            {
+                var data = new BsonDocument();
+                foreach (var name in db.GetCollectionNames())
+                {
+                    data[name] = new BsonArray(db.GetCollection(name).FindAll());
+                }
+                File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + "HomeBaseExport.json", JsonSerializer.Serialize(data));
+            }
+
+            MessageBox.Show("Exported Successfully");
+        }
+
+        private void ImportButton_Click(object sender, EventArgs e)
+        {
+
+            //Opens a file explorer to grab the file
+            OpenFileDialog fdlg = new OpenFileDialog();
+            fdlg.Title = "Roborts File Explorer";
+            fdlg.InitialDirectory = @"c:\";
+            fdlg.Filter = "All files (*.*)|*.*|All files (*.*)|*.*";
+            fdlg.FilterIndex = 2;
+            fdlg.RestoreDirectory = true;
+
+            if (fdlg.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    using (var db = new LiteDatabase(@"IQIncorporated.db"))
+                    {
+                        string[] tableNames = new string[db.GetCollectionNames().Count()];
+
+                        for (int i = 0; i < db.GetCollectionNames().Count(); i++)
+                        {
+                            tableNames[i] = db.GetCollectionNames().ElementAt(i);
+                        }
+
+                        foreach (var name in tableNames)
+                        {
+                            System.Diagnostics.Debug.WriteLine(name);
+                            db.DropCollection(name);
+                        }
+
+                    }
+
+                    // import data FROM JSON
+                    using (var db = new LiteDatabase(@"IQIncorporated.db"))
+                    {
+                        var data = JsonSerializer.Deserialize(File.ReadAllText(fdlg.FileName)).AsDocument;
+                        foreach (var name in data.Keys)
+                        {
+                            db.GetCollection(name).Insert(data[name].AsArray.Select(x => x.AsDocument));
+                        }
+                    }
+
+                    MessageBox.Show("Imported Successfully");
+
+                }
+                catch (Exception excep)
+                {
+                    MessageBox.Show("Invalid file, please try again ");
+
+                }
+            }
         }
     }
 }
