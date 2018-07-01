@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace Contractor
 {
@@ -18,6 +19,7 @@ namespace Contractor
         {
             InitializeComponent();
 
+            //initializes required outputs, to be populated later
             DescriptionOutput.Text = "";
             LocationOutput.Text = "";
             TimeOutput.Text = "";
@@ -179,12 +181,87 @@ namespace Contractor
 
         private void CompleteSave_Click(object sender, EventArgs e)
         {
+            //todo add to database
 
+            //checks if the cost and description are empty
+            if(CompleteCost.Text != "" && CompleteDescription.Text != "")
+            {
+                Job jobTable = new Job();
+                Contractor contractorTable = new Contractor();
+                Client clientTable = new Client();
+                //to complete
+
+            }
+            else
+            {
+
+            }
         }
 
         private void Invoice_Click(object sender, EventArgs e)
         {
+            //only checks is descritionOutput for the auto fills as if it is null the rest of the auto fill fields are also null
+            if (DescriptionOutput.Text != "" && CompleteCost.Text != "" && DescriptionOutput.Text != "")
+            {
+                Job jobTable = new Job();
+                //works but has extra unnecacary code from the copy of above
+                Job job = jobTable.GetJob(Int32.Parse(JobListView.Items[JobListView.SelectedIndices[0]].SubItems[4].Text.Trim()));
 
+                //writes to a txt file called invoice
+                //locaiton is \Contractor\Contractor\bin\Debug
+                using (StreamWriter writer = new StreamWriter("invoice.txt"))
+                {
+                    writer.WriteLine("Invoice Number: " + job.ID);
+                    writer.WriteLine("Job");
+                    writer.WriteLine("Descriton: " + DescriptionOutput.Text);
+                    writer.WriteLine("Location: " + LocationOutput.Text);
+                    writer.WriteLine("Date and Time: " + TimeOutput.Text);
+                    writer.WriteLine("Priority: " + PriorityOutput.Checked);
+                    writer.WriteLine("Client");
+                    writer.WriteLine("Name: " + NameOutput.Text);
+                    writer.WriteLine("Address: " + AddressOutput.Text);
+                    writer.WriteLine("LandLine Number: " + LandLineOutput.Text);
+                    writer.WriteLine("Mobile Number: " + MobileOutput.Text);
+                    writer.WriteLine("Business: " + BusinessOutput.Text);
+                    writer.WriteLine("Email: " + EmailOutput.Text);
+                    writer.WriteLine("Completion ");
+                    writer.WriteLine("Completion Description: " + CompleteDescription.Text);                 
+                    writer.WriteLine("Finished: " + FinishedCheck.Checked);
+                    writer.WriteLine("Cost: " + CompleteCost.Text);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please add the price and/or the description and/or select a valid job");
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CompleteCost_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //forces cost to only use numbers
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+            //forces the textbox to not allow more inputs after a secound decimal place
+            if (Regex.IsMatch(CompleteCost.Text, @"\.\d\d") && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void contractorID_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //forces id to only use numbers
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

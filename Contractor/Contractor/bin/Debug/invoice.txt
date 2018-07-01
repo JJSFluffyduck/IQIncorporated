@@ -1,0 +1,17 @@
+Invoice Number: 1
+Job
+Descriton: Fix computers
+Location: Adelaide
+Date and Time: 1/07/2018 9:55:45 AM
+Priority: True
+Client
+Name: Lisa David
+Address: 14 sim
+LandLine Number: 82838213
+Mobile Number: 981973811
+Business: westpac
+Email: westpac
+Completion 
+Completion Description: test
+Finished: False
+Cost: 2
