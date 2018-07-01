@@ -9,7 +9,6 @@ namespace HomeBase
 {
     class Job
     {
-
         public int ID { get; set; }
         public int ClientID { get; set; }
         public int ContractorID { get; set; }
@@ -17,7 +16,11 @@ namespace HomeBase
         public string Location { get; set; }
         public DateTime DateTime { get; set; }
         public bool Priority { get; set; }
+        public string Cost { get; set; }
+        public string CompleteDescription { get; set; }
+        public Boolean Finished { get; set; }
 
+        //Creating a new job
         public void AddJob(int clientID, int contractorID, String description, String location, DateTime dateTime, bool priority)
         {
             // Open database (or create if not exits)
@@ -26,7 +29,7 @@ namespace HomeBase
                 // Get client collection
                 var jobs = db.GetCollection<Job>("jobs");
 
-                // Create your new customer instance
+                // Create new job instance
                 var job = new Job
                 {
                     ClientID = clientID,
@@ -34,7 +37,10 @@ namespace HomeBase
                     Description = description,
                     Location = location,
                     DateTime = dateTime,
-                    Priority = priority
+                    Priority = priority,
+                    Cost = "",
+                    CompleteDescription = "",
+                    Finished = false
                 };
 
                 // Insert new customer document (Id will be auto-incremented)
@@ -42,6 +48,7 @@ namespace HomeBase
             }
         }
 
+        //get job by clientID and contractorId
         public Job GetJob(int clientID, int contractorID)
         {
             // Open database (or create if not exits)
@@ -53,6 +60,7 @@ namespace HomeBase
                 // Use Linq to query documents
                 var results = jobs.Find(x => x.ClientID.Equals(clientID) && x.ContractorID.Equals(contractorID));
 
+                //Return first instance
                 if (results.Count() > 0)
                 {
                     return results.First();

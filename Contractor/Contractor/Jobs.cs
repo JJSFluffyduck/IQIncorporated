@@ -17,13 +17,16 @@ namespace Contractor
         public string Location { get; set; }
         public DateTime DateTime { get; set; }
         public bool Priority { get; set; }
+        public string Cost { get; set; }
+        public string CompleteDescription { get; set; }
+        public Boolean Finished { get; set; }
 
         public void AddJob(int clientID, int contractorID, String description, String location, DateTime dateTime, bool priority)
         {
             // Open database (or create if not exits)
             using (var db = new LiteDatabase(@"IQIncorporated.db"))
             {
-                // Get client collection
+                // Get job collection
                 var jobs = db.GetCollection<Job>("jobs");
 
                 // Create your new customer instance
@@ -34,11 +37,32 @@ namespace Contractor
                     Description = description,
                     Location = location,
                     DateTime = dateTime,
-                    Priority = priority
+                    Priority = priority,
+                    Cost = "",
+                    CompleteDescription = "",
+                    Finished = false
                 };
 
                 // Insert new customer document (Id will be auto-incremented)
                 jobs.Insert(job);
+            }
+        }
+
+        //Updates the job with new information
+        public void UpdateJob(int JobID, string CompleteCost, string CompleteDescription, Boolean FinishedCheck)
+        {
+            // Open database (or create if not exits)
+            using (var db = new LiteDatabase(@"IQIncorporated.db"))
+            {
+                var jobs = db.GetCollection<Job>("jobs");
+
+                Job job = GetJob(JobID);
+
+                job.Cost = CompleteCost;
+                job.CompleteDescription = CompleteDescription;
+                job.Finished = FinishedCheck;
+
+                jobs.Update(job);
             }
         }
 
@@ -47,7 +71,7 @@ namespace Contractor
             // Open database (or create if not exits)
             using (var db = new LiteDatabase(@"IQIncorporated.db"))
             {
-                // Get clients collection
+                // Get job collection
                 var jobs = db.GetCollection<Job>("jobs");
 
                 // Use Linq to query documents
@@ -69,7 +93,7 @@ namespace Contractor
             // Open database (or create if not exits)
             using (var db = new LiteDatabase(@"IQIncorporated.db"))
             {
-                // Get clients collection
+                // Get job collection
                 var jobs = db.GetCollection<Job>("jobs");
 
                 // Use Linq to query documents
@@ -86,7 +110,7 @@ namespace Contractor
             }
         }
 
-
+        //returns all jobs for a contractor
         public Job[] JobList(string contractorID) {
             int CleanID;
 

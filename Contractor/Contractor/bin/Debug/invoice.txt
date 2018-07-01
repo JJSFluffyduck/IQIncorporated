@@ -1,17 +1,17 @@
-Invoice Number: 1
+Invoice Number: 3
 Job
-Descriton: Fix computers
-Location: Adelaide
-Date and Time: 1/07/2018 9:55:45 AM
+Descriton: Outlook is freezing
+Location: melbourne
+Date and Time: 7/07/2018 2:26:18 PM
 Priority: True
 Client
-Name: Lisa David
-Address: 14 sim
-LandLine Number: 82838213
-Mobile Number: 981973811
-Business: westpac
-Email: westpac
+Name: Jack Hall
+Address: 7 Blaxland
+LandLine Number: 82323232
+Mobile Number: 0443432123
+Business: 82634321
+Email: 82634321
 Completion 
-Completion Description: test
-Finished: False
-Cost: 2
+Completion Description: This is a test
+Finished: True
+Cost: 2.00

@@ -31,6 +31,7 @@ namespace Contractor
             EmailOutput.Text = "";
         }
 
+        //Exports database ready to be taken in by homebase
         private void ExportButton_Click(object sender, EventArgs e)
         {
             // export data TO JSON
@@ -47,6 +48,7 @@ namespace Contractor
             MessageBox.Show("Exported Successfully");
         }
 
+        //Reads json file in form homebase
         private void ImportButton_Click(object sender, EventArgs e)
         {
             //Opens a file explorer to grab the file
@@ -61,6 +63,7 @@ namespace Contractor
             {
                 try
                 {
+                    //deletes old db ready for new data
                     using (var db = new LiteDatabase(@"IQIncorporated.db"))
                     {
                         string[] tableNames = new string[db.GetCollectionNames().Count()];
@@ -97,6 +100,7 @@ namespace Contractor
             }
         }
 
+        //User select a job to be loaded in
         private void JobListView_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (JobListView.SelectedIndices.Count>0) {
@@ -108,6 +112,7 @@ namespace Contractor
                 Job job = jobTable.GetJob(Int32.Parse(JobListView.Items[JobListView.SelectedIndices[0]].SubItems[4].Text.Trim()));
                 Client client = clientTable.GetClient(job.ClientID);
 
+                //Update all fields with text
                 DescriptionOutput.Text = job.Description;
                 LocationOutput.Text = job.Location;
                 TimeOutput.Text = job.DateTime.ToString();
@@ -119,9 +124,14 @@ namespace Contractor
                 MobileOutput.Text = client.Mobile;
                 BusinessOutput.Text = client.Business;
                 EmailOutput.Text = client.Business;
+
+                CompleteCost.Text = job.Cost;
+                CompleteDescription.Text = job.CompleteDescription;
+                FinishedCheck.Checked = job.Finished;
             }
             else
             {
+                //Clears if a job is unselected
                 DescriptionOutput.Text = "";
                 LocationOutput.Text = "";
                 TimeOutput.Text = "";
@@ -141,6 +151,7 @@ namespace Contractor
 
         }
 
+        //Customer entered a contractor ID
         private void contractorID_TextChanged(object sender, EventArgs e)
         {
             JobListView.Items.Clear();
@@ -149,6 +160,7 @@ namespace Contractor
 
             Job[] jobList = jobTable.JobList(contractorID.Text.Trim());
 
+            //Loads all jobs assigned to that contractor
             if (jobList != null)
             {
                 System.Diagnostics.Debug.WriteLine("Count: " + jobList.Count());
@@ -169,35 +181,35 @@ namespace Contractor
             JobListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ClientLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void CompleteSave_Click(object sender, EventArgs e)
         {
-            //todo add to database
-
             //checks if the cost and description are empty
             if(CompleteCost.Text != "" && CompleteDescription.Text != "")
             {
                 Job jobTable = new Job();
                 Contractor contractorTable = new Contractor();
                 Client clientTable = new Client();
-                //to complete
+
+                //Updates job with new information
+                if (JobListView.SelectedIndices.Count > 0)
+                {
+                    jobTable.UpdateJob(Int32.Parse(JobListView.Items[JobListView.SelectedIndices[0]].SubItems[4].Text.Trim()), CompleteCost.Text, CompleteDescription.Text, FinishedCheck.Checked);
+                }
+                else
+                {
+                    MessageBox.Show("Please reselect the current job");
+
+                }
+                
 
             }
             else
             {
-
+                MessageBox.Show("Please add the price and/or the description and/or select a valid job");
             }
         }
 
+        //Export a invoice for the customer
         private void Invoice_Click(object sender, EventArgs e)
         {
             //only checks is descritionOutput for the auto fills as if it is null the rest of the auto fill fields are also null
@@ -234,11 +246,6 @@ namespace Contractor
             {
                 MessageBox.Show("Please add the price and/or the description and/or select a valid job");
             }
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void CompleteCost_KeyPress(object sender, KeyPressEventArgs e)

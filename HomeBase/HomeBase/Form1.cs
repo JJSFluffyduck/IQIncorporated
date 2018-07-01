@@ -22,13 +22,8 @@ namespace HomeBase
 
 
         }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'agileassignment3DataSet.Table' table. You can move, or remove it, as needed.
-            this.tableTableAdapter.Fill(this.agileassignment3DataSet.Table);
 
-        }
-
+        //Clear Input boxes
         private void clear_Click(object sender, EventArgs e)
         {
             jobClientEmailBox.Clear();
@@ -38,11 +33,14 @@ namespace HomeBase
             JobLocationBox.Clear();
         }
 
+        //Updates databse with fields
         private void save_Click(object sender, EventArgs e)
         {
+            //Check if all fields has data
             if(jobClientEmailBox.Text != "" && jobContractorEmailBox.Text != "" && jobDescriptionBox.Text != ""
                 && jobDateBox.Text != "" && JobLocationBox.Text != "")
             {
+                //Checks for valid email
                 bool contractorEmailVal = EmailValidator(jobContractorEmailBox.Text);
                 bool clientEmailVal = EmailValidator(jobClientEmailBox.Text);
                 if (contractorEmailVal == false || clientEmailVal == false)
@@ -51,6 +49,7 @@ namespace HomeBase
                 }
                 else
                 {
+                    //Creates w new job
                     Client clientTable = new Client();
                     Contractor contractorTable = new Contractor();
                     DateTime jobDateTime = new DateTime(jobDateBox.Value.Year, jobDateBox.Value.Month, 
@@ -61,6 +60,7 @@ namespace HomeBase
                     if(clientTable.GetClient(jobClientEmailBox.Text) == null || 
                         contractorTable.GetContractor(jobContractorEmailBox.Text) == null)
                     {
+                        //Tried to add a job to a null employee or client
                         MessageBox.Show("Email/'s not in database, please check spelling and try again");
                     }
                     else
@@ -121,7 +121,6 @@ namespace HomeBase
 
         private void clientSavebtn_Click(object sender, EventArgs e)
         {
-            //TODO
             //checks if any of the fields are empty
             if(clientFirstNameBox.Text != "" && clientLastNameBox.Text != "" && clientAddressBox.Text != "" && 
                 clientLandLineBox.Text != "" && clientMobileBox.Text != "" && clientBuisinessNameBox.Text != "" && clientEmailBox.Text != "")
@@ -151,6 +150,7 @@ namespace HomeBase
             }
         }
 
+        //Clear Input boxes
         private void clientClearBtn_Click(object sender, EventArgs e)
         {
             //clears the fields
@@ -192,6 +192,7 @@ namespace HomeBase
             }
         }
 
+        //Clear Input boxes
         private void contractorClearBtn_Click(object sender, EventArgs e)
         {
             //clears the fields
@@ -212,6 +213,7 @@ namespace HomeBase
             return regex.IsMatch(email);
         }
 
+        //Exports database to json file, to be download into contractor application
         private void ExportButton_Click(object sender, EventArgs e)
         {
             // export data TO JSON
@@ -222,12 +224,14 @@ namespace HomeBase
                 {
                     data[name] = new BsonArray(db.GetCollection(name).FindAll());
                 }
+                //Export save file where application is running
                 File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + "HomeBaseExport.json", JsonSerializer.Serialize(data));
             }
 
             MessageBox.Show("Exported Successfully");
         }
 
+        //Imports database from contractor app
         private void ImportButton_Click(object sender, EventArgs e)
         {
 
@@ -243,6 +247,7 @@ namespace HomeBase
             {
                 try
                 {
+                    //Deletes old database to get ready for a new one
                     using (var db = new LiteDatabase(@"IQIncorporated.db"))
                     {
                         string[] tableNames = new string[db.GetCollectionNames().Count()];

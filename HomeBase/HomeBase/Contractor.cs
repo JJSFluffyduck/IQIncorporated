@@ -18,6 +18,7 @@ namespace HomeBase
         public string EmployeeID { get; set; }
         public string Email { get; set; }
 
+        //Create a new Contractor
         public void AddContractor(String name, String address, String landLine, String mobile, String employeeID, String email)
         {
             // Open database (or create if not exits)
@@ -26,7 +27,7 @@ namespace HomeBase
                 // Get contractors collection
                 var contractors = db.GetCollection<Contractor>("contractors");
 
-                // Create your new contractor instance
+                // Create new contractor instance
                 var contractor = new Contractor
                 {
                     Name = name,
@@ -42,6 +43,7 @@ namespace HomeBase
             }
         }
 
+        //Get Contractor by email
         public Contractor GetContractor(String email)
         {
             // Open database (or create if not exits)
